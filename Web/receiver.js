@@ -1,6 +1,7 @@
 var canvas = document.querySelector('canvas'),
 	context = canvas.getContext('2d'),
-	ws = new WebSocket('ws://10.0.1.24:8888');
+	wsURL = 'ws://' + window.location.host.split(':')[0] + ':8888',
+	ws = new WebSocket(wsURL);
 
 ws.binaryType = 'arraybuffer';
 

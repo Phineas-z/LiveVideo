@@ -1,4 +1,4 @@
-var FPS = 30;
+var FPS = 5;
 
 var video = document.querySelector('video'),
 	render = document.querySelector('#render'),
@@ -6,6 +6,7 @@ var video = document.querySelector('video'),
 	renderContext = render.getContext('2d'),
 	receiverContext = receiver.getContext('2d'),
 	ws = null,
+	wsURL = 'ws://' + window.location.host.split(':')[0] + ':8888', 
 	width = 0, // actual video size to render
 	height = 0;
 
@@ -41,7 +42,7 @@ video.addEventListener('play', function() {
 	}, 1000 / FPS);
 });
 
-ws = new WebSocket('ws://localhost:8888');
+ws = new WebSocket(wsURL);
 ws.binaryType = 'arraybuffer';
 
 ws.onopen = function() {
